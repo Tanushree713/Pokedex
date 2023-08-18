@@ -12,7 +12,7 @@ function PokemonList() {
         setisLoading(true)
         const response = await axios.get(pokedexURL) //this downloads list of 20 pokemons
         const pokemonResults = response.data.results  //we get the array of pokemons from result  
-        
+
         console.log(response.data)
         setNextURL(response.data.next)
         setPrevURL(response.data.previous)
@@ -36,11 +36,11 @@ function PokemonList() {
         setPokemonList(pokeListResult)
         setisLoading(false)
     }
-    
+
     useEffect( () => {
         downloadPokemons()
     } ,[pokedexURL])
-   
+
     return (
         <div className="pokemon-list-wrapper"> 
             <div className="pokemon-wrapper">
@@ -52,9 +52,9 @@ function PokemonList() {
                 <button disabled = {prevURL == null} onClick={() => setPokedexURL(prevURL)}>Prev</button>
                 <button disabled = {nextURL == null} onClick={() => setPokedexURL(nextURL)}>Next</button>
             </div>
-            
+
         </div>
     )
-    
+
 }
 export default PokemonList;
